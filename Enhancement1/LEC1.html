@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Excel Combiner with Report Builder</title>
+    <title>Smart Excel & CSV Combiner</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://unpkg.com/docx@7.1.0/build/index.js"></script>
     
@@ -136,14 +136,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>🧠 Smart Excel Combiner & Report Builder</h1>
+        <h1>🧠 Smart Excel & CSV Combiner</h1>
         <p class="subtitle">Combine files, sort data, select rows, and build official reports</p>
 
         <div class="upload-area" id="uploadArea">
             <div class="upload-icon">📁</div>
             <div class="upload-text">Click to upload or drag and drop</div>
-            <div class="upload-hint">Upload multiple Excel files (.xlsx, .xls)</div>
-            <input type="file" id="fileInput" accept=".xlsx,.xls" multiple>
+            <div class="upload-hint">Upload multiple Excel (.xlsx, .xls) or CSV files</div>
+            <input type="file" id="fileInput" accept=".xlsx,.xls,.csv" multiple>
         </div>
 
         <div class="file-list" id="fileList"></div>
@@ -216,8 +216,9 @@
         uploadArea.addEventListener('drop', (e) => {
             e.preventDefault();
             uploadArea.classList.remove('drag-over');
+            // Updated: filter now accepts CSV files
             const droppedFiles = Array.from(e.dataTransfer.files).filter(f => 
-                f.name.endsWith('.xlsx') || f.name.endsWith('.xls')
+                f.name.endsWith('.xlsx') || f.name.endsWith('.xls') || f.name.toLowerCase().endsWith('.csv')
             );
             addFiles(droppedFiles);
         });
@@ -306,6 +307,7 @@
                 reader.onload = (e) => {
                     try {
                         const data = new Uint8Array(e.target.result);
+                        // XLSX.read handles CSV files automatically when passed as array buffer
                         const workbook = XLSX.read(data, { type: 'array' });
                         const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
                         const jsonData = XLSX.utils.sheet_to_json(firstSheet);
