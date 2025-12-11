@@ -1,16 +1,17 @@
-# 📊 Smart Excel Combiner & Report Builder
+# 📊 Smart Excel & CSV Combiner + Report Builder
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Platform](https://img.shields.io/badge/platform-Browser-orange.svg)
 ![Privacy](https://img.shields.io/badge/privacy-100%25%20Local-green.svg)
 
-A powerful, single-file tool to merge Excel files, analyze data, and generate custom reports directly in your browser.
+A powerful, single-file tool to merge Excel and CSV files, analyze data, and generate custom reports directly in your browser.
 
 Unlike standard mergers, this tool allows you to **select specific rows** from multiple files, **reorder them**, and export a curated **Word (.docx)** or **Excel (.xlsx)** document.
 
 ## ✨ Key Features
 
 ### 🧠 Smart Data Merging
+* **Multi-Format Support:** Seamlessly combines Excel (`.xlsx`, `.xls`) and CSV (`.csv`) files into one master dataset.
 * **Header Mapping:** Automatically aligns columns by name (e.g., "Email" maps to "Email"), even if the column order differs between files.
 * **Dynamic Discovery:** If a file contains a new column not present in previous files, it is automatically added to the master table.
 
@@ -37,12 +38,12 @@ Unlike standard mergers, this tool allows you to **select specific rows** from m
 
 1.  Download the `index.html` file from this repository.
 2.  Open `index.html` in any modern web browser (Chrome, Edge, Firefox, Safari).
-3.  **Drag & Drop** your Excel files onto the upload area.
+3.  **Drag & Drop** your Excel or CSV files onto the upload area.
 4.  Click **Combine & View Data**.
 
 ## 🛠 Usage Guide
 
-1.  **Upload:** Drop multiple `.xlsx` or `.xls` files.
+1.  **Upload:** Drop multiple `.xlsx`, `.xls`, or `.csv` files.
 2.  **Combine:** Click the button to merge them into a master view.
 3.  **Select:** Check the boxes for the rows you want to include in your final document. You can sort columns to find data easier—your selections will be saved!
 4.  **Add to Report:** Click "Add Selected to Report" to move them to the bottom section.
@@ -56,7 +57,7 @@ Unlike standard mergers, this tool allows you to **select specific rows** from m
 
 This project uses pure HTML/CSS/JS and relies on two powerful CDNs:
 
-* **[SheetJS (xlsx)](https://sheetjs.com/):** For reading and writing Excel files.
+* **[SheetJS (xlsx)](https://sheetjs.com/):** For reading and writing Excel and CSV files.
 * **[docx.js](https://docx.js.org/):** For generating valid Microsoft Word documents programmatically.
 
 ## ⚠️ Limitations
